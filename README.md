@@ -36,6 +36,31 @@ A API sobe em `http://localhost:3000` e o Postgres em `localhost:5432`.
 
 ## Estrutura do Repositório
 
+```text
+.
+├── README.md
+├── relatorio.md                 # Relatório do processo com IA (4 questões)
+├── docker-compose.yml           # API + PostgreSQL (ambiente local)
+├── .env.example
+├── app/                         # API de Reservas (Node.js/Express)
+│   ├── src/
+│   ├── package.json
+│   ├── Dockerfile               # multi-stage, usuário não-root
+│   └── .dockerignore
+├── infra/                       # Terraform modularizado
+│   ├── modules/
+│   │   ├── vpc/
+│   │   ├── security-group/
+│   │   ├── ec2/
+│   │   └── rds/
+│   ├── backend/                 # DynamoDB (lock) + create-bucket.sh (bucket S3 do state)
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── providers.tf             # provider AWS + backend S3
+└── evidencias/                  # builds, compose, plan/apply/destroy, testes da API
+```
+
 ## Infraestrutura AWS
 
 Provisionada via Terraform modularizado (`infra/`) no AWS Academy Learner Lab, região
