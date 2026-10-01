@@ -1,0 +1,19 @@
+=== docker compose ps ===
+NAME           IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+reservas-api   prova-primeiro-bimestre-devops-api   "docker-entrypoint.s…"   api       11 seconds ago   Up 5 seconds (healthy)    0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+reservas-db    postgres:16-alpine                   "docker-entrypoint.s…"   db        11 seconds ago   Up 11 seconds (healthy)   5432/tcp
+
+=== health da API local ===
+{"status":"ok","database":"connected"}
+
+=== POST /reservas (grava no Postgres do Compose) ===
+{"id":1,"cliente":"Gabriel","data":"2026-10-05T00:00:00.000Z","status":"confirmada","criado_em":"2026-10-01T02:54:21.773Z"}
+
+=== GET /reservas ===
+[{"id":1,"cliente":"Gabriel","data":"2026-10-05T00:00:00.000Z","status":"confirmada","criado_em":"2026-10-01T02:54:21.773Z"}]
+
+=== volume nomeado ===
+local     prova-primeiro-bimestre-devops_db-data
+
+=== rede bridge customizada ===
+06d6a6d23ac3   prova-primeiro-bimestre-devops_reservas-net   bridge    local

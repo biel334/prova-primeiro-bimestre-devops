@@ -1,0 +1,16 @@
+=== POST /reservas ===
+{"id":4,"cliente":"Gabriel","data":"2026-10-05T00:00:00.000Z","status":"confirmada","criado_em":"2026-10-01T02:30:42.742Z"}
+id criado: 4
+=== GET /reservas/4 ===
+{"id":4,"cliente":"Gabriel","data":"2026-10-05T00:00:00.000Z","status":"confirmada","criado_em":"2026-10-01T02:30:42.742Z"}
+=== PUT /reservas/4 ===
+{"id":4,"cliente":"Gabriel de Souza","data":"2026-10-06T00:00:00.000Z","status":"cancelada","criado_em":"2026-10-01T02:30:42.742Z"}
+=== GET /reservas ===
+[{"id":2,"cliente":"Maria","data":"2026-10-10T00:00:00.000Z","status":"pendente","criado_em":"2026-10-01T00:01:24.030Z"},{"id":3,"cliente":"Maria","data":"2026-10-10T00:00:00.000Z","status":"pendente","criado_em":"2026-10-01T02:27:07.334Z"},{"id":4,"cliente":"Gabriel de Souza","data":"2026-10-06T00:00:00.000Z","status":"cancelada","criado_em":"2026-10-01T02:30:42.742Z"}]
+=== DELETE /reservas/4 ===
+HTTP 204
+=== GET /reservas/4 apos delete (esperado 404) ===
+HTTP 404
+=== POST sem campos obrigatorios (esperado 400) ===
+{"erros":["cliente é obrigatório e deve ser uma string não vazia","data é obrigatória e deve ser uma data válida (YYYY-MM-DD)"]}
+HTTP 400
