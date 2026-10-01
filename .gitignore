@@ -18,3 +18,6 @@ crash.log
 
 # SO
 .DS_Store
+terraform.tfvars
+*.zip
+tfplan
